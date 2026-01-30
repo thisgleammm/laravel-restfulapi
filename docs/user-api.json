@@ -78,7 +78,7 @@
                             "application/json": {
                                 "examples": {
                                     "success": {
-                                        "descriptioon": "Success register user",
+                                        "description": "Success register user",
                                         "value": {
                                             "data": {
                                                 "id": 1,
