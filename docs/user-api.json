@@ -30,7 +30,9 @@
                             "schema": {
                                 "type": "object",
                                 "required": [
-                                    "name", "username", "password"
+                                    "name",
+                                    "username",
+                                    "password"
                                 ],
                                 "properties": {
                                     "username": {
@@ -71,7 +73,7 @@
                                 }
                             }
                         }
-                    }, 
+                    },
                     "201": {
                         "description": "Success register user",
                         "content": {
@@ -92,18 +94,15 @@
                                     "type": "object",
                                     "properties": {
                                         "data": {
-                                            "type":"object",
+                                            "type": "object",
                                             "properties": {
                                                 "id": {
-                                                    "type": "numnber"
+                                                    "type": "number"
                                                 },
                                                 "username": {
                                                     "type": "string"
                                                 },
                                                 "name": {
-                                                    "type": "string"
-                                                },
-                                                "token" : {
                                                     "type": "string"
                                                 }
                                             }
@@ -126,15 +125,37 @@
                     "content": {
                         "application/json": {
                             "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "username": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success login",
+                        "content": {
+                            "application/json": {
+                                "schema": {
                                     "type": "object",
                                     "properties": {
                                         "data": {
-                                            "type":"object",
+                                            "type": "object",
                                             "properties": {
                                                 "id": {
-                                                    "type": "numnber"
+                                                    "type": "number"
                                                 },
                                                 "username": {
+                                                    "type": "string"
+                                                },
+                                                "name": {
                                                     "type": "string"
                                                 },
                                                 "token": {
@@ -146,17 +167,6 @@
                                             "type": "object"
                                         }
                                     }
-                                }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Success login user",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-
                                 }
                             }
                         }
@@ -170,7 +180,10 @@
                 "parameters": [
                     {
                         "name": "Authorization",
-                        "in": "header"
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 ],
                 "responses": {
@@ -182,10 +195,10 @@
                                     "type": "object",
                                     "properties": {
                                         "data": {
-                                            "type":"object",
+                                            "type": "object",
                                             "properties": {
                                                 "id": {
-                                                    "type": "numnber"
+                                                    "type": "number"
                                                 },
                                                 "username": {
                                                     "type": "string"
@@ -210,7 +223,10 @@
                 "parameters": [
                     {
                         "name": "Authorization",
-                        "in": "header"
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 ],
                 "requestBody": {
@@ -240,10 +256,10 @@
                                     "type": "object",
                                     "properties": {
                                         "data": {
-                                            "type":"object",
+                                            "type": "object",
                                             "properties": {
                                                 "id": {
-                                                    "type": "numnber"
+                                                    "type": "number"
                                                 },
                                                 "username": {
                                                     "type": "string"
@@ -270,19 +286,22 @@
                 "parameters": [
                     {
                         "name": "Authorization",
-                        "in": "header"
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Success update user",
+                        "description": "Success logout user",
                         "content": {
                             "application/json": {
                                 "schema": {
                                     "type": "object",
                                     "properties": {
                                         "data": {
-                                            "type":"boolean"
+                                            "type": "boolean"
                                         },
                                         "errors": {
                                             "type": "object"

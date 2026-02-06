@@ -17,11 +17,18 @@
                 "parameters": [
                     {
                         "name": "Authorization",
-                        "in": "header"
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        }
                     },
                     {
                         "name": "idContact",
-                        "in": "path"
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
                     }
                 ],
                 "requestBody": {
@@ -94,6 +101,23 @@
             },
             "get": {
                 "description": "Get list addresses",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "idContact",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "List addresses",
@@ -139,21 +163,32 @@
                 }
             }
         },
-        "/api/contacts/{idContact}/addresses/{idAddresses}": {
+        "/api/contacts/{idContact}/addresses/{idAddress}": {
             "get": {
                 "description": "Get address",
                 "parameters": [
                     {
-                        "name":"Authorization",
-                        "in": "header"
+                        "name": "Authorization",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        }
                     },
                     {
                         "name": "idContact",
-                        "in": "path"
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
                     },
                     {
                         "name": "idAddress",
-                        "in": "path"
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
                     }
                 ],
                 "responses": {
@@ -201,16 +236,27 @@
                 "description": "Update address",
                 "parameters": [
                     {
-                        "name":"Authorization",
-                        "in": "header"
+                        "name": "Authorization",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        }
                     },
                     {
                         "name": "idContact",
-                        "in": "path"
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
                     },
                     {
                         "name": "idAddress",
-                        "in": "path"
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
                     }
                 ],
                 "requestBody": {
@@ -285,16 +331,27 @@
                 "description": "Delete address",
                 "parameters": [
                     {
-                        "name":"Authorization",
-                        "in": "header"
+                        "name": "Authorization",
+                        "in": "header",
+                        "schema": {
+                            "type": "string"
+                        }
                     },
                     {
                         "name": "idContact",
-                        "in": "path"
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
                     },
                     {
                         "name": "idAddress",
-                        "in": "path"
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
                     }
                 ],
                 "responses": {

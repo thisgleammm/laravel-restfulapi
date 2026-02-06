@@ -21,7 +21,7 @@
                     }
                 ],
                 "requestBody": {
-                    "description":"Create new contact",
+                    "description": "Create new contact",
                     "content": {
                         "application/json": {
                             "schema": {
@@ -45,7 +45,7 @@
                     }
                 },
                 "responses": {
-                    "200": {
+                    "201": {
                         "description": "Success create contact",
                         "content": {
                             "application/json": {
@@ -53,10 +53,10 @@
                                     "type": "object",
                                     "properties": {
                                         "data": {
-                                            "type":"object",
+                                            "type": "object",
                                             "properties": {
                                                 "id": {
-                                                    "type": "numnber"
+                                                    "type": "number"
                                                 },
                                                 "first_name": {
                                                     "type": "string"
@@ -64,10 +64,10 @@
                                                 "last_name": {
                                                     "type": "string"
                                                 },
-                                                "email" : {
+                                                "email": {
                                                     "type": "string"
                                                 },
-                                                "phone" : {
+                                                "phone": {
                                                     "type": "string"
                                                 }
                                             }
@@ -109,7 +109,7 @@
                         "name": "page",
                         "in": "query"
                     }
-                ], 
+                ],
                 "responses": {
                     "200": {
                         "description": "Success search contacts",
@@ -121,10 +121,10 @@
                                         "data": {
                                             "type": "array",
                                             "items": {
-                                                "type": "object", 
+                                                "type": "object",
                                                 "properties": {
                                                     "id": {
-                                                        "type": "numnber"
+                                                        "type": "number"
                                                     },
                                                     "first_name": {
                                                         "type": "string"
@@ -132,17 +132,17 @@
                                                     "last_name": {
                                                         "type": "string"
                                                     },
-                                                    "email" : {
+                                                    "email": {
                                                         "type": "string"
                                                     },
-                                                    "phone" : {
+                                                    "phone": {
                                                         "type": "string"
                                                     }
                                                 }
-                                            } 
+                                            }
                                         },
                                         "errors": {
-
+                                            "type": "object"
                                         },
                                         "meta": {
                                             "type": "object"
@@ -162,10 +162,14 @@
                     {
                         "name": "Authorization",
                         "in": "header"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path"
                     }
                 ],
                 "requestBody": {
-                    "description":"Update contact",
+                    "description": "Update contact",
                     "content": {
                         "application/json": {
                             "schema": {
@@ -197,10 +201,10 @@
                                     "type": "object",
                                     "properties": {
                                         "data": {
-                                            "type":"object",
+                                            "type": "object",
                                             "properties": {
                                                 "id": {
-                                                    "type": "numnber"
+                                                    "type": "number"
                                                 },
                                                 "first_name": {
                                                     "type": "string"
@@ -208,7 +212,10 @@
                                                 "last_name": {
                                                     "type": "string"
                                                 },
-                                                "phone" : {
+                                                "email": {
+                                                    "type": "string"
+                                                },
+                                                "phone": {
                                                     "type": "string"
                                                 }
                                             }
@@ -244,10 +251,10 @@
                                     "type": "object",
                                     "properties": {
                                         "data": {
-                                            "type":"object",
+                                            "type": "object",
                                             "properties": {
                                                 "id": {
-                                                    "type": "numnber"
+                                                    "type": "number"
                                                 },
                                                 "first_name": {
                                                     "type": "string"
@@ -255,7 +262,10 @@
                                                 "last_name": {
                                                     "type": "string"
                                                 },
-                                                "phone" : {
+                                                "email": {
+                                                    "type": "string"
+                                                },
+                                                "phone": {
                                                     "type": "string"
                                                 }
                                             }
@@ -288,7 +298,7 @@
                         "content": {
                             "application/json": {
                                 "schema": {
-                                    "type": "boolean",
+                                    "type": "object",
                                     "properties": {
                                         "data": {
                                             "type": "boolean"
