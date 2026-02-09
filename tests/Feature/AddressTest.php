@@ -110,7 +110,7 @@ class AddressTest extends TestCase
 
         $address = Address::query()->limit(1)->first();
 
-        $this->get('/api/contacts/' . $address->contact_id . '/addresses/' . $address->id + 1, [
+        $this->get('/api/contacts/' . $address->contact_id . '/addresses/' . ($address->id + 1), [
             "Authorization" => 'test'
         ])->assertStatus(404)
             ->assertJson([
@@ -120,5 +120,74 @@ class AddressTest extends TestCase
                     ]
                 ]
                 ]);
+    }
+
+    public function testUpdateSuccess() {
+        $this->seed([UserSeeder::class, ContactSeeder::class, AddressSeeder::class]);
+
+        $address = Address::query()->limit(1)->first();
+
+        $this->put('/api/contacts/' . $address->contact_id . '/addresses/' . $address->id, [
+            "street" => 'update',
+            "city" => 'update',
+            "province" => "update",
+            "country" => "update",
+            "postal_code" => "12121",
+        ], [
+            "Authorization" => 'test'
+        ])->assertStatus(200)
+            ->assertJson([
+                'data' => [
+                    "street" => 'update',
+                    "city" => 'update',
+                    "province" => "update",
+                    "country" => "update",
+                    "postal_code" => "12121",
+                ]
+            ]);
+    }
+    public function testUpdateFailed() {
+        $this->seed([UserSeeder::class, ContactSeeder::class, AddressSeeder::class]);
+
+        $address = Address::query()->limit(1)->first();
+
+        $this->put('/api/contacts/' . $address->contact_id . '/addresses/' . $address->id, [
+            "street" => 'update',
+            "city" => 'update',
+            "province" => "update",
+            "country" => "",
+            "postal_code" => "12121",
+        ], [
+            "Authorization" => 'test'
+        ])->assertStatus(400)
+            ->assertJson([
+                'errors' => [
+                    "country" => [
+                        "The country field is required."
+                    ]
+                ]
+            ]);
+    }
+    public function testUpdateNotFound() {
+        $this->seed([UserSeeder::class, ContactSeeder::class, AddressSeeder::class]);
+
+        $address = Address::query()->limit(1)->first();
+
+        $this->put('/api/contacts/' . $address->contact_id . '/addresses/' . ($address->id + 1), [
+            "street" => 'update',
+            "city" => 'update',
+            "province" => "update",
+            "country" => "update",
+            "postal_code" => "12121",
+        ], [
+            "Authorization" => 'test'
+        ])->assertStatus(404)
+            ->assertJson([
+                'errors' => [
+                    "message" => [
+                        "not found"
+                    ]
+                ]
+            ]);
     }
 }
